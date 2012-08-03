@@ -17,6 +17,7 @@ Get your location with WiFi Mac Address and GoogleMap.
     % which whereami
     % whereami --help
     % whereami --dump
+    % open `whereami --open`
 
 
 == SYNOPSIS:
