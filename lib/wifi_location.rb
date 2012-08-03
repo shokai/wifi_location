@@ -13,14 +13,14 @@ module WiFiLocation
       lines.shift
       lines.map{|i|
         a = i.scan(/[^\s]+/)
-        {:bssid => a[1], :signal => a[2].to_i}
+        {'bssid' => a[1], 'signal' => a[2].to_i}
       }
     when /linux/
       lines = `iwlist wlan0 scan`.split(/[\r\n]/)
       addrs = []
       lines.each do |line|
-        addrs.push({:bssid => line.split(/\s+/).last, :signal => 8}) if line =~ /Address: /
-        addrs.last[:signal] = line.scan(/Signal level=(\-?\d+)/)[0][0].to_i rescue next if line =~ /Signal level=/
+        addrs.push({'bssid' => line.split(/\s+/).last, 'signal' => 8}) if line =~ /Address: /
+        addrs.last['signal'] = line.scan(/Signal level=(\-?\d+)/)[0][0].to_i rescue next if line =~ /Signal level=/
       end
       addrs
     end
@@ -33,7 +33,7 @@ module WiFiLocation
       :host => 'maps.google.com',
       :request_address => true,
       :address_language => ENV['LANG'] ? ENV['LANG'].scan(/([^\.]+)/)[0][0] : 'en_US',
-      :wifi_towers => wifi_towers.map{|tower| {:mac_address => tower[:bssid], :signal_strength => tower[:signal], :age => 0} }
+      :wifi_towers => wifi_towers.map{|tower| {:mac_address => tower['bssid'], :signal_strength => tower['signal'], :age => 0} }
     }.to_json
     headers = {'Content-Type' => 'application/json'}
     res = Net::HTTP.start(uri.host, uri.port).request(Net::HTTP::Post.new(uri.request_uri, headers), query)

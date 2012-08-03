@@ -6,6 +6,18 @@
 
 Get your location with WiFi Mac Address and GoogleMap.
 
+
+== INSTALL:
+
+    % gem install wifi_location
+
+
+== GET Location:
+
+    % which whereami
+    % whereami --help
+
+
 == SYNOPSIS:
 
     require 'rubygems'
@@ -17,11 +29,8 @@ Get your location with WiFi Mac Address and GoogleMap.
 
 == REQUIREMENTS:
 
-* WiFI, Mac OSX or Linux
+* WiFi, Mac OSX or Linux
 
-== INSTALL:
-
-* gem install wifi_location
 
 == LICENSE:
 

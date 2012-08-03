@@ -13,7 +13,8 @@ Hoe.plugin :newgem
 $hoe = Hoe.spec 'wifi_location' do
   self.developer 'Sho Hashimoto', 'hashimoto@shokai.org'
   self.rubyforge_name       = self.name # TODO this is default value
-  # self.extra_deps         = [['json','>= 1.5.3']]
+  self.extra_deps         = [['json','>= 1.5.3'],
+                             ['args_parser', '>= 0.0.2']]
 
 end
 

@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+require File.expand_path '../lib/wifi_location', File.dirname(__FILE__)
+require 'rubygems'
+require 'args_parser'
+require 'json'
+
+parser = ArgsParser.parse ARGV do
+  arg :help, 'show help', :alias => :h
+  arg :towers, 'dump WiFi towers'
+  arg :dump, 'dump ALL'
+  arg :map, 'open Google Map'
+end
+
+if parser.has_option? :help
+  puts parser.help
+  exit
+end
+
+if parser.has_option? :towers
+  puts WiFiLocation.wifi_towers.to_json
+  exit
+end
+
+if parser.has_option? :dump
+  towers = WiFiLocation.wifi_towers
+  location = WiFiLocation.location towers
+  h = {:towers => towers, :location => location}
+  puts h.to_json
+  exit
+end
+
+if parser.has_option? :map
+  location = WiFiLocation.location
+  puts url = "https://maps.google.com/?ll=#{location['latitude']},#{location['longitude']}"  
+  open_cmd = `which open`.strip
+  `#{open_cmd} #{url}` unless open_cmd.empty?
+  exit
+end
+
+location = WiFiLocation.location
+puts "lat=#{location['latitude']},lon=#{location['longitude']}"
