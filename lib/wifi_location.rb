@@ -36,7 +36,8 @@ module WiFiLocation
       :address_language => ENV['LANG'] ? ENV['LANG'].scan(/([^\.]+)/)[0][0] : 'en_US',
       :wifi_towers => wifi_towers.map{|addr| {:mac_address => addr[:bssid], :signal_strength => addr[:signal], :age => 0} }
     }.to_json
-    res = Net::HTTP.start(uri.host, uri.port).request(Net::HTTP::Post.new(uri.request_uri), query)
+    headers = {'Content-Type' => 'application/x-www-form-urlencoded'}
+    res = Net::HTTP.start(uri.host, uri.port).request(Net::HTTP::Post.new(uri.request_uri, headers), query)
     raise "Response Error (#{res.code})" unless res.code.to_i == 200
     JSON.parse(res.body)['location']
   end
