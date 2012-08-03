@@ -28,15 +28,14 @@ module WiFiLocation
 
   def self.location(wifi_towers=self.wifi_towers)
     uri = URI.parse 'http://www.google.com/loc/json'
-    wifi_towers = self.wifi_towers unless wifi_towers
     query = {
       :version => '1.1.0',
       :host => 'maps.google.com',
       :request_address => true,
       :address_language => ENV['LANG'] ? ENV['LANG'].scan(/([^\.]+)/)[0][0] : 'en_US',
-      :wifi_towers => wifi_towers.map{|addr| {:mac_address => addr[:bssid], :signal_strength => addr[:signal], :age => 0} }
+      :wifi_towers => wifi_towers.map{|tower| {:mac_address => tower[:bssid], :signal_strength => tower[:signal], :age => 0} }
     }.to_json
-    headers = {'Content-Type' => 'application/x-www-form-urlencoded'}
+    headers = {'Content-Type' => 'application/json'}
     res = Net::HTTP.start(uri.host, uri.port).request(Net::HTTP::Post.new(uri.request_uri, headers), query)
     raise "Response Error (#{res.code})" unless res.code.to_i == 200
     JSON.parse(res.body)['location']
