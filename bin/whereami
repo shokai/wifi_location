@@ -24,31 +24,24 @@ if parser.has_option? :version
   exit
 end
 
+towers = WiFiLocation.wifi_towers
+
 if parser.has_option? :towers
-  puts WiFiLocation.wifi_towers.to_json
+  puts towers.to_json
   exit
 end
 
+location = WiFiLocation.location towers
+
 if parser.has_option? :dump
-  towers = WiFiLocation.wifi_towers
-  location = WiFiLocation.location towers
   h = {:towers => towers, :location => location}
   puts h.to_json
   exit
 end
 
 if parser.has_option? :map
-  location = WiFiLocation.location
   puts url = "https://maps.google.com/?ll=#{location['latitude']},#{location['longitude']}"
-  ['xdg-open', 'open'].each do |cmd|
-    cmd = `which #{cmd}`.strip
-    unless cmd.empty?
-      system "#{cmd} #{url}"
-      break
-    end
-  end
   exit
 end
 
-location = WiFiLocation.location
 puts "lat=#{location['latitude']},lon=#{location['longitude']}"
