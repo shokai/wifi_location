@@ -4,6 +4,7 @@ README.rdoc
 Rakefile
 bin/wifi_location
 lib/wifi_location.rb
+samples/sample.rb
 script/console
 script/destroy
 script/generate
