@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require File.expand_path '../lib/wifi_location', File.dirname(__FILE__)
+
+towers = WiFiLocation.wifi_towers
+puts "towers - #{towers.inspect}"
+
+location = WiFiLocation.location towers
+puts "location - #{location.inspect}"
+
+puts "map - https://maps.google.com/?ll=#{location['latitude']},#{location['longitude']}&z=16"

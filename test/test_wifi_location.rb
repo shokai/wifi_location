@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestWifiLocation < Test::Unit::TestCase
+class TestWiFiLocation < Test::Unit::TestCase
 
   def setup
   end
