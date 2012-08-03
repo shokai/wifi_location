@@ -11,9 +11,9 @@ Hoe.plugin :newgem
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'wifi_location' do
-  self.developer 'FIXME full name', 'FIXME email'
+  self.developer 'Sho Hashimoto', 'hashimoto@shokai.org'
   self.rubyforge_name       = self.name # TODO this is default value
-  # self.extra_deps         = [['activesupport','>= 2.0.2']]
+  # self.extra_deps         = [['json','>= 1.5.3']]
 
 end
 

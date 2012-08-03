@@ -1,32 +1,33 @@
 = wifi_location
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/shokai/wifi_location
 
 == DESCRIPTION:
 
-FIX (describe your package)
-
-== FEATURES/PROBLEMS:
-
-* FIX (list of features or problems)
+Get your location with WiFi Mac Address and GoogleMap.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+    require 'rubygems'
+    require 'wifi_location'
+    loc = WiFiLocation.location
+    puts "#{loc['latitude']}, #{loc['longitude']}"
+    p loc['address']
+
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* WiFI, Mac OSX or Linux
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* gem install wifi_location
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2012 FIXME full name
+Copyright (c) 2012 Sho Hashimoto
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

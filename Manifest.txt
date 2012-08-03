@@ -2,6 +2,7 @@ History.txt
 Manifest.txt
 README.rdoc
 Rakefile
+bin/wifi_location
 lib/wifi_location.rb
 script/console
 script/destroy
