@@ -31,9 +31,14 @@ end
 
 if parser.has_option? :map
   location = WiFiLocation.location
-  puts url = "https://maps.google.com/?ll=#{location['latitude']},#{location['longitude']}"  
-  open_cmd = `which open`.strip
-  `#{open_cmd} #{url}` unless open_cmd.empty?
+  puts url = "https://maps.google.com/?ll=#{location['latitude']},#{location['longitude']}"
+  ['xdg-open', 'open'].each do |cmd|
+    cmd = `which #{cmd}`.strip
+    unless cmd.empty?
+      system "#{cmd} #{url}"
+      break
+    end
+  end
   exit
 end
 
