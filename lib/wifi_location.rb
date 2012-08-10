@@ -20,7 +20,7 @@ module WiFiLocation
       addrs = []
       lines.each do |line|
         addrs.push({'bssid' => line.split(/\s+/).last, 'signal' => 8}) if line =~ /Address: /
-        addrs.last['signal'] = line.scan(/Signal level=(\-?\d+)/)[0][0].to_i rescue next if line =~ /Signal level=/
+        addrs.last['signal'] = line.scan(/Signal level[:=](\-?\d+)/)[0][0].to_i rescue next if line =~ /Signal level[:=]/
       end
       addrs
     end
