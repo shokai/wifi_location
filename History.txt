@@ -1,3 +1,7 @@
+=== 0.0.4 2012-08-10
+
+* fix parsing Signal Level on Linux
+
 === 0.0.3 2012-08-03
 
 * not open map on "whereami --map"
