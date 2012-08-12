@@ -1,3 +1,7 @@
+=== 0.0.5 2012-08-12
+
+* show error message on "whereami" if no WiFi towers or Google doesn't recognize
+
 === 0.0.4 2012-08-10
 
 * fix parsing Signal Level on Linux
