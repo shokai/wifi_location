@@ -31,7 +31,18 @@ if parser.has_option? :towers
   exit
 end
 
+if towers.empty?
+  puts 'Cannot get location - There is no WiFi tower.'
+  exit 1
+end
+
 location = WiFiLocation.location towers
+
+unless location
+  puts "Cannot get location - #{towers.count} WiFi towers found, but Google doen't recognize them."
+  puts towers.to_json
+  exit 1
+end
 
 if parser.has_option? :dump
   h = {:towers => towers, :location => location}
