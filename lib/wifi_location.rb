@@ -4,7 +4,7 @@ require 'uri'
 require 'json'
 
 module WiFiLocation
-  VERSION = '0.0.4'
+  VERSION = '0.0.5'
 
   def self.wifi_towers
     case RUBY_PLATFORM
