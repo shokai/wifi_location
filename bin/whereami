@@ -8,19 +8,19 @@ parser = ArgsParser.parse ARGV do
   arg :help, 'show help', :alias => :h
   arg :towers, 'dump WiFi towers'
   arg :dump, 'dump ALL'
-  arg :map, 'open Google Map'
+  arg :map, 'show Google Map URL'
   arg :version, 'show version', :alias => :v
 end
 
 if parser.has_option? :help
   puts parser.help
   puts "--"
-  puts "wifi_location v#{WiFiLocation::VERSION} - https://github.com/shokai/wifi_location"
+  puts "wifi_location v#{WiFiLocation::VERSION} - http://shokai.github.com/wifi_location"
   exit
 end
 
 if parser.has_option? :version
-  puts "wifi_location v#{WiFiLocation::VERSION} - https://github.com/shokai/wifi_location"
+  puts "wifi_location v#{WiFiLocation::VERSION} - http://shokai.github.com/wifi_location"
   exit
 end
 

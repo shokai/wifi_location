@@ -1,6 +1,6 @@
 = wifi_location
 
-* http://github.com/shokai/wifi_location
+* http://shokai.github.com/wifi_location
 
 == DESCRIPTION:
 
@@ -14,7 +14,6 @@ Get your location with WiFi Mac Address and GoogleMap.
 
 == GET Location:
 
-    % which whereami
     % whereami --help
     % whereami --dump
     % open `whereami --map`

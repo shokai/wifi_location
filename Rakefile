@@ -12,10 +12,10 @@ Hoe.plugin :newgem
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'wifi_location' do
   self.developer 'Sho Hashimoto', 'hashimoto@shokai.org'
-  self.post_install_message = "!! You can get your location with \"whereami\" command. For more information on wifi_location, see https://rubygems.org/gems/wifi_location"
+  self.post_install_message = "!! You can get your location with \"whereami\" command. => http://shokai.github.com/wifi_location"
   self.rubyforge_name       = self.name # TODO this is default value
   self.extra_deps         = [['json','>= 1.5.3'],
-                             ['args_parser', '>= 0.0.2']]
+                             ['args_parser', '>= 0.1.0', '< 0.2.0']]
 
 end
 
