@@ -3,10 +3,10 @@ GEM
   specs:
     RedCloth (4.2.9)
     activesupport (2.3.14)
-    args_parser (0.0.2)
-    hoe (3.0.6)
+    args_parser (0.1.0)
+    hoe (3.1.0)
       rake (~> 0.8)
-    json_pure (1.7.4)
+    json_pure (1.7.5)
     newgem (1.5.3)
       RedCloth (>= 4.1.1)
       activesupport (~> 2.3.4)
