@@ -11,7 +11,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="javascripts/script.js"></script>
 
-  <title>Wifi location</title>
+  <title>Wifi location - Get your location with WiFi Mac Address and GoogleMap.</title>
   <meta name="description" content="Get your location with WiFi Mac Address and GoogleMap.">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -39,17 +39,27 @@
           <h2>REQUIREMENTS:</h2>
 
 <ul>
+<li>Ruby 1.8.7+ or 1.9.2+</li>
 <li>WiFi</li>
-<li>Ruby</li>
 <li>Mac OSX or Linux</li>
 </ul><h2>INSTALL:</h2>
 
-<pre><code>% gem install wifi_location
-</code></pre>
+<pre><code>% gem install wifi_location</code></pre>
+
+<h2>HELP:</h2>
+<pre><code>% whereami --help
+options:
+ -help (-h)     show help
+ -towers        dump WiFi towers
+ -dump          dump ALL
+ -map           show Google Map URL
+ -version (-v)  show version
+--
+wifi_location v0.0.6 - http://shokai.github.com/wifi_location</code></pre>
 
 <h2>GET Location:</h2>
-
-<pre><code>% whereami --help
+<pre><code>% whereami
+lat=35.3880376,lon=139.4262089
 % open `whereami --map`
 =&gt; https://maps.google.com/?ll=35.3880376,139.4262089
 </code></pre>
@@ -60,14 +70,14 @@
 {"towers":[{"bssid":"4c:e6:76:50:30:93","signal":-77},{"bssid":"04:1e:64:fd:cc:4a","signal":-54},{"bssid":"96:84:0d:e0:4e:70","signal":-41},{"bssid":"Network","signal":0},{"bssid":"04:1e:64:fd:cc:49","signal":-53},{"bssid":"4c:e6:76:50:30:92","signal":-71},{"bssid":"96:84:0d:e0:4e:6f","signal":-38},{"bssid":"90:84:0d:e0:4e:6f","signal":-38}],"location":{"latitude":35.3880442,"address":{"region":"Kanagawa Prefecture","street_number":"５３２２","country_code":"JP","country":"Japan","city":"Fujisawa"},"longitude":139.4261648,"accuracy":55.0}}
 </code></pre>
 
-<h2>LANG:</h2>
+<h2>LOCALE:</h2>
 
 <pre><code>% export LANG=ja.JP
 % whereami --dump
 {"towers":[{"signal":-77,"bssid":"4c:e6:76:50:30:93"},{"signal":-55,"bssid":"04:1e:64:fd:cc:4a"},{"signal":-42,"bssid":"96:84:0d:e0:4e:70"},{"signal":0,"bssid":"Network"},{"signal":-49,"bssid":"04:1e:64:fd:cc:49"},{"signal":-72,"bssid":"4c:e6:76:50:30:92"},{"signal":-38,"bssid":"96:84:0d:e0:4e:6f"},{"signal":-38,"bssid":"90:84:0d:e0:4e:6f"}],"location":{"latitude":35.3880371,"address":{"street_number":"５３２２","city":"藤沢市","region":"神奈川県","country_code":"JP","country":"日本"},"longitude":139.4261413,"accuracy":49.0}}
 </code></pre>
 
-<h2>Gem Usage:</h2>
+<h2>Rubygem Usage:</h2>
 
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">'rubygems'</span>
 <span class="nb">require</span> <span class="s1">'wifi_location'</span>
