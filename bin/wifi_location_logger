@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'wifi_location'
+require 'fileutils'
+require 'rubygems'
+require 'args_parser'
+require 'launch_agent'
+
+unless $:.grep(/rvm/).empty?
+  STDERR.puts 'LaunchAgent uses System Ruby.'
+  STDERR.puts 'please => % rvm use system'
+  exit 1
+end
+
+parser = ArgsParser.parse ARGV do
+  arg :install, 'install wifi_logger'
+  arg :uninstall, 'uninstall wifi_logger'
+  arg :interval, 'logging interval (sec)', :default => 120
+  arg :logpath, 'log file path', :default => '/var/log/wifi_location'
+  arg :version, 'show version', :alias => :v
+  arg :help, 'show help', :alias => :h
+end
+
+if parser.has_option? :help
+  STDERR.puts "wifi_location_logger v#{WiFiLocation::VERSION}"
+  STDERR.puts "http://shokai.github.com/wifi_location"
+  STDERR.puts
+  STDERR.puts parser.help
+  STDERR.puts
+  STDERR.puts "e.g."
+  STDERR.puts " #{$0} --install"
+  STDERR.puts " #{$0} --install --interval 300"
+  STDERR.puts " #{$0} --uninstall"
+  exit
+end
+
+if parser.has_option? :write_log
+  towers = WiFiLocation.wifi_towers
+  exit 0 if towers.empty?
+  logfile = File.expand_path "#{Time.now.strftime '%Y%m%d'}.log", parser[:logpath]
+  File.open logfile, 'a' do |f|
+    f.write Time.now.to_i
+    f.write "\t"
+    f.write towers.to_json
+    f.write "\n"
+  end
+  exit
+end
+
+module LaunchAgent
+  class Base
+    DOMAIN = 'org.shokai'
+  end
+end
+
+bin_self = File.expand_path($0, Dir.pwd)
+agent = LaunchAgent::Periodic.new(parser[:interval], 'ruby', bin_self, '-write_log', '-logpath', parser[:logpath])
+
+if parser.has_option? :install
+  puts 'install wifi_location_logger..'
+  unless File.exists? parser[:logpath]
+    puts "create log directory - #{parser[:logpath]}"
+    system "sudo mkdir -p '#{parser[:logpath]}' && sudo chown `whoami` '#{parser[:logpath]}'"
+  end
+  puts "Logs => #{parser[:logpath]}"
+  puts "LaunchAgents => #{ENV['HOME']}/Library/LaunchAgents"
+  agent.load
+elsif parser.has_option? :uninstall
+  puts 'uninstall wifi_location_logger..'
+  agent.unload
+end
