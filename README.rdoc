@@ -12,13 +12,6 @@ Get your location with WiFi Mac Address and GoogleMap.
     % gem install wifi_location
 
 
-== GET Location:
-
-    % whereami --help
-    % whereami --dump
-    % open `whereami --map`
-
-
 == SYNOPSIS:
 
     require 'rubygems'
@@ -26,6 +19,20 @@ Get your location with WiFi Mac Address and GoogleMap.
     loc = WiFiLocation.location
     puts "#{loc['latitude']}, #{loc['longitude']}"
     p loc['address']
+
+
+== GET Location:
+
+    % whereami --help
+    % whereami --dump
+    % open `whereami --map`
+
+
+== Install WiFi Logger:
+
+    % wifi_location_logger --help
+    % wifi_location_logger --install
+    % wifi_location_logger --uninstall
 
 
 == REQUIREMENTS:
