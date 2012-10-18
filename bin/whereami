@@ -1,15 +1,16 @@
 #!/usr/bin/env ruby
-require File.expand_path '../lib/wifi_location', File.dirname(__FILE__)
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'wifi_location'
 require 'rubygems'
 require 'args_parser'
 require 'json'
 
 parser = ArgsParser.parse ARGV do
-  arg :help, 'show help', :alias => :h
   arg :towers, 'dump WiFi towers'
   arg :dump, 'dump ALL'
   arg :map, 'show Google Map URL'
   arg :version, 'show version', :alias => :v
+  arg :help, 'show help', :alias => :h
 end
 
 if parser.has_option? :help
