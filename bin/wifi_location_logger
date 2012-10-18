@@ -59,7 +59,7 @@ module LaunchAgent
 end
 
 bin_self = File.expand_path($0, Dir.pwd)
-agent = LaunchAgent::Periodic.new(parser[:interval], 'ruby', bin_self, '-write_log', '-logpath', parser[:logpath])
+agent = LaunchAgent::Periodic.new(parser[:interval], 'ruby', bin_self, '-write_log', "-logpath=#{parser[:logpath]}")
 
 if parser.has_option? :install
   puts 'install wifi_location_logger..'
