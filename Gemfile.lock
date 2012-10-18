@@ -3,7 +3,7 @@ GEM
   specs:
     RedCloth (4.2.9)
     activesupport (2.3.14)
-    args_parser (0.1.0)
+    args_parser (0.1.2)
     docopt (0.5.0)
     hoe (3.1.0)
       rake (~> 0.8)

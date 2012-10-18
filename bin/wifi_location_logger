@@ -26,6 +26,10 @@ parser = ArgsParser.parse ARGV, :style => :equal do
   arg :logpath, 'log file path', :default => '/var/log/wifi_location'
   arg :version, 'show version', :alias => :v
   arg :help, 'show help', :alias => :h
+
+  validate :interval, "invalid interval (sec)" do |v|
+    v.kind_of? Fixnum and v > 0
+  end
 end
 
 if parser.has_option? :help or ARGV.empty?
