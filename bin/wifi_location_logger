@@ -5,6 +5,14 @@ require 'rubygems'
 require 'args_parser'
 require 'launch_agent'
 
+$VERBOSE=nil
+module LaunchAgent
+  class Base
+    DOMAIN = 'org.shokai'
+  end
+end
+$VERBOSE=true
+
 unless $:.grep(/rvm/).empty?
   STDERR.puts 'LaunchAgent uses System Ruby.'
   STDERR.puts 'please => % rvm use system'
@@ -50,12 +58,6 @@ if parser.has_option? :write_log
     f.write "\n"
   end
   exit
-end
-
-module LaunchAgent
-  class Base
-    DOMAIN = 'org.shokai'
-  end
 end
 
 bin_self = File.expand_path($0, Dir.pwd)
