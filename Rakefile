@@ -15,7 +15,8 @@ $hoe = Hoe.spec 'wifi_location' do
   self.post_install_message = "!! You can get your location with \"whereami\" command. => http://shokai.github.com/wifi_location"
   self.rubyforge_name       = self.name # TODO this is default value
   self.extra_deps         = [['json','>= 1.5.3'],
-                             ['args_parser', '>= 0.1.0', '< 0.2.0']]
+                             ['args_parser', '>= 0.1.0', '< 1.0.0'],
+                             ['launch-agent', '>= 0.7.0', '< 1.0.0']]
 
 end
 
