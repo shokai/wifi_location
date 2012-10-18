@@ -22,7 +22,7 @@ end
 parser = ArgsParser.parse ARGV, :style => :equal do
   arg :install, 'install wifi_logger into LaunchAgent'
   arg :uninstall, 'uninstall wifi_logger from LaunchAgent'
-  arg :interval, 'logging interval (sec)', :default => 120
+  arg :interval, 'logging interval (sec)', :default => 300
   arg :logpath, 'log file path', :default => '/var/log/wifi_location'
   arg :version, 'show version', :alias => :v
   arg :help, 'show help', :alias => :h
