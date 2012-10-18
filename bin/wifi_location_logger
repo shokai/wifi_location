@@ -20,15 +20,15 @@ unless $:.grep(/rvm/).empty?
 end
 
 parser = ArgsParser.parse ARGV, :style => :equal do
-  arg :install, 'install wifi_logger'
-  arg :uninstall, 'uninstall wifi_logger'
+  arg :install, 'install wifi_logger into LaunchAgent'
+  arg :uninstall, 'uninstall wifi_logger from LaunchAgent'
   arg :interval, 'logging interval (sec)', :default => 120
   arg :logpath, 'log file path', :default => '/var/log/wifi_location'
   arg :version, 'show version', :alias => :v
   arg :help, 'show help', :alias => :h
 end
 
-if parser.has_option? :help
+if parser.has_option? :help or ARGV.empty?
   STDERR.puts "wifi_location_logger v#{WiFiLocation::VERSION}"
   STDERR.puts "http://shokai.github.com/wifi_location"
   STDERR.puts
