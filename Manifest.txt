@@ -1,8 +1,11 @@
+Gemfile
+Gemfile.lock
 History.txt
 Manifest.txt
 README.rdoc
 Rakefile
 bin/whereami
+bin/wifi_location_logger
 lib/wifi_location.rb
 samples/sample.rb
 script/console

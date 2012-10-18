@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'wifi_location'
-require 'fileutils'
 require 'rubygems'
 require 'args_parser'
 require 'launch_agent'
@@ -12,7 +11,7 @@ unless $:.grep(/rvm/).empty?
   exit 1
 end
 
-parser = ArgsParser.parse ARGV do
+parser = ArgsParser.parse ARGV, :style => :equal do
   arg :install, 'install wifi_logger'
   arg :uninstall, 'uninstall wifi_logger'
   arg :interval, 'logging interval (sec)', :default => 120
@@ -29,7 +28,7 @@ if parser.has_option? :help
   STDERR.puts
   STDERR.puts "e.g."
   STDERR.puts " #{$0} --install"
-  STDERR.puts " #{$0} --install --interval 300"
+  STDERR.puts " #{$0} --install --interval=300"
   STDERR.puts " #{$0} --uninstall"
   exit
 end
