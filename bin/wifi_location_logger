@@ -30,7 +30,13 @@ if parser.has_option? :help
   STDERR.puts " #{$0} --install"
   STDERR.puts " #{$0} --install --interval=300"
   STDERR.puts " #{$0} --uninstall"
-  exit
+  exit 1
+end
+
+if parser.has_option? :version
+  STDERR.puts "wifi_location_logger v#{WiFiLocation::VERSION}"
+  STDERR.puts "http://shokai.github.com/wifi_location"
+  exit 1
 end
 
 if parser.has_option? :write_log
