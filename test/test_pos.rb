@@ -10,7 +10,7 @@ class TestPos < Test::Unit::TestCase
   end
 
   def test_read_write
-    pos2 = WiFiLocation::Pos.new @pos.to_s
+    pos2 = WiFiLocation::Pos.new.parse @pos.to_s
     assert pos2.towers == @pos.towers
     assert pos2.time.to_i == @pos.time.to_i
   end
